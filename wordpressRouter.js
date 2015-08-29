@@ -75,7 +75,7 @@ class WordpressRouter extends
 
           var recentPromise = new Promise( (resolve, reject) => {
 
-            wp.posts().filter({posts_per_page:top}).then( (posts) => {
+            wp.posts().filter({posts_per_page:top, orderby:'date'}).then( (posts) => {
               var postList = _.map(posts, (post) => $ref(`postsById[${post.id}]`) );
               var returnValues = [];
 
