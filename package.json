@@ -1,15 +1,15 @@
 {
-  "name": "falcor-express-demo",
+  "name": "falcor-wordpress",
   "version": "0.0.1",
-  "description": "A falcor server for express demo.",
-  "homepage": "https://github.com/Netflix/falcor-express-demo",
+  "description": "A falcor server for consuming the wordpress API.",
+  "homepage": "https://github.com/jasonphillips/falcor-wordpress",
   "author": {
-    "name": "Netflix",
-    "url": "https://github.com/Netflix/falcor-express-demo/authors.txt"
+    "name": "Jason Phillips",
+    "url": "https://github.com/jasonphillips"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Netflix/falcor-express-demo.git"
+    "url": "https://github.com/jasonphillips/falcor-wordpress.git"
   },
   "licenses": [
     {
@@ -18,15 +18,21 @@
     }
   ],
   "scripts": {
-    "start": "node index.js"
+    "start": "babel-node index.js"
   },
   "dependencies": {
-    "express": "~4.11.1",
     "body-parser": "^1.12.4",
-    "falcor-router-demo": "1.0.3",
-    "falcor-express": "0.1.1"
+    "express": "~4.11.1",
+    "falcor": "~0.1.12",
+    "falcor-express": "https://github.com/jasonphillips/falcor-express.git#jsonHeader",
+    "falcor-json-graph": "~1.1.5",
+    "falcor-router": "~0.2.9",
+    "lodash": "^3.10.1",
+    "promise": "^7.0.4",
+    "wordpress-rest-api": "^0.4.0"
   },
   "devDependencies": {
+    "babel": "^5.8.23",
     "eslint": "^0.21.0"
   }
 }

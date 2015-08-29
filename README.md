@@ -1,16 +1,16 @@
-# Falcor Express Middleware Demonstration
+# Falcor Wordpress Router
 
-This project is a demonstration of how to create a stateless Virtual JSON Graph object on your application server using a Falcor Router and some express middleware.
+This project is currently an in-progress demonstration for consuming the [Wordpress REST API](https://github.com/WP-API/WP-API) via a Falcor endpoint running in node.js. The result is far cleaner client code and a dramatic reduction in client network requests when pulling in a variety of related or interlinked content.
 
 ## Getting Started
 
 ```
-clone repo
+# clone repo
 npm install
 npm start
-open your browser and visit http://localhost:9090
+# open your browser and visit http://localhost:9090
 ```
 
-This will download a webpage which makes several requests from data from the model.json resource on the application server, and prints the results to the console.  You will not see anything on your screen until you open up the developer console. Checkout the source of the website to see what types of operations can be performed on the model.json file on the server.
+The demo page allows you to test live queries against the offical [Wordpress Rest API demo site](http://demo.wp-api.org/), including a couple of examples to get you started.
 
-For more information on how the Router works and the structure of model.json, see the Router source at https://github.com/Netflix/falcor-router-demo.
+**Note:** there are some differences betweeen the 1.0 and 2.0 branches of the WP API. The demo site used here is on 2.0.
