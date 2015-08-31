@@ -19,4 +19,6 @@ The demo page allows you to test live queries against the offical [Wordpress Res
 
 - [x] postsById
 - [x] recentPosts
+- [x] taxonomies (meta, terms list)
+- [x] termsById
 - [ ] more to come...
