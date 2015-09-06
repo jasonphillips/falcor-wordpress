@@ -3,18 +3,23 @@
 var Router = require('falcor-router');
 var Promise = require('promise');
 var _ = require('lodash');
+
 // falcor basics
 var jsonGraph = require('falcor-json-graph');
 var $ref = jsonGraph.ref;
 var $error = jsonGraph.error;
+
 // wordpress client for API 2.0
 var WP = require('../wordpress-rest-api/wp.js');
+
 // handlers
 var PostsById = require('./classes/postsById.js');
 var PostsByIndices = require('./classes/postsByIndices.js');
 var TermsById = require('./classes/termsById.js');
 var TaxonomiesById = require('./classes/taxonomiesById.js');
 var TermsByIndices = require('./classes/TermsByIndices.js');
+var AuthorsById = require('./classes/authorsById.js');
+
 // logging
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({name: 'wordpressRouter'});
@@ -77,6 +82,14 @@ class WordpressRouter extends
       route: 'termsById.tag.[{integers:tagIds}][{keys:props}]',
       get: function (pathSet) {
         var handler = new TermsById(this, pathSet.tagIds, pathSet.props, 'tag');
+        return handler.buildReturn();
+      }
+    },
+
+    {
+      route: 'authorsById[{integers:userIds}][{keys:props}]',
+      get: function (pathSet) {
+        var handler = new AuthorsById(this, pathSet.userIds, pathSet.props);
         return handler.buildReturn();
       }
     }
