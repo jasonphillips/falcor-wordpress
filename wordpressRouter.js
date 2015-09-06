@@ -10,7 +10,7 @@ var $ref = jsonGraph.ref;
 var $error = jsonGraph.error;
 
 // wordpress client for API 2.0
-var WP = require('../wordpress-rest-api/wp.js');
+var WP = require('wordpress-rest-api');
 
 // handlers
 var PostsById = require('./classes/postsById.js');
