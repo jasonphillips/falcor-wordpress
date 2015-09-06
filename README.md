@@ -1,6 +1,6 @@
 # Falcor Wordpress Router
 
-This project is currently a **work in-progress** demonstration for consuming the [Wordpress REST API](https://github.com/WP-API/WP-API) via a Falcor endpoint running in node.js. The result is far cleaner client code and a dramatic reduction in client network requests when pulling in a variety of related or interlinked content.
+This project is a work in-progress implementation for consuming the [Wordpress REST API](https://github.com/WP-API/WP-API) via a Falcor endpoint running in node.js. The result will be far cleaner client code and a dramatic reduction in client network requests when pulling in a variety of related or interlinked content.
 
 ## Getting Started
 
@@ -21,4 +21,5 @@ The demo page allows you to test live queries against the offical [Wordpress Res
 - [x] recentPosts
 - [x] taxonomies (meta, terms list)
 - [x] termsById
+- [x] authorsById
 - [ ] more to come...
