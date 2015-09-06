@@ -19,6 +19,7 @@ var TermsById = require('./classes/termsById.js');
 var TaxonomiesById = require('./classes/taxonomiesById.js');
 var TermsByIndices = require('./classes/TermsByIndices.js');
 var AuthorsById = require('./classes/authorsById.js');
+var MediaById = require('./classes/mediaById.js');
 
 // logging
 var bunyan = require('bunyan');
@@ -90,6 +91,14 @@ class WordpressRouter extends
       route: 'authorsById[{integers:userIds}][{keys:props}]',
       get: function (pathSet) {
         var handler = new AuthorsById(this, pathSet.userIds, pathSet.props);
+        return handler.buildReturn();
+      }
+    },
+
+    {
+      route: 'mediaById[{integers:mediaIds}][{keys:props}]',
+      get: function (pathSet) {
+        var handler = new MediaById(this, pathSet.mediaIds, pathSet.props);
         return handler.buildReturn();
       }
     }
