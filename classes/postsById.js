@@ -9,6 +9,12 @@ class PostsById extends FetchById {
   getReturnPath(id, key) {
     return (typeof key !== 'undefined') ? ['postsById', id, key] : ['postsById', id];
   }
+
+  getReferenceKeys() {
+    return {
+      author: (id) => `authorsById[${id}]`
+    };
+  }
 }
 
 export default PostsById;

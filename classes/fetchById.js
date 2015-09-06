@@ -23,6 +23,11 @@ class FetchById {
     return (typeof key !== 'undefined') ? [id, key] : [id];
   }
 
+  // Override with keys that should return references {key=>path}
+  getReferenceKeys() {
+    return {};
+  }
+
   getPromises() {
     var promises = _.map(this.ids, (id) => {
       var itemPromise = new Promise((resolve, reject) => {
@@ -43,6 +48,7 @@ class FetchById {
   resolvePromises(promises) {
     return Promise.all(promises).then((records) => {
       var results = [];
+      var referenceKeys = this.getReferenceKeys();
 
       this.ids.forEach((id, offset) => {
         var record = records[offset];
@@ -55,14 +61,22 @@ class FetchById {
             });
           } else if (record.id || record.name) {
             let value = record[key];
-            // handle WP 2.0 {rendered} values
-            if (typeof value === 'object' && value.rendered) {
-              value = value.rendered;
-            }
-            results.push({
+            // reference keys
+            if (typeof referenceKeys[key] === 'function') {
+              results.push({
                 path: this.getReturnPath(id, key),
-                value: value
-            });
+                value: $ref(referenceKeys[key](value))
+              });
+            } else {
+              if (typeof value === 'object' && value.rendered) {
+                // handle WP 2.0 {rendered} values
+                value = value.rendered;
+              }
+              results.push({
+                  path: this.getReturnPath(id, key),
+                  value: value
+              });
+            }
           } else {
             results.push({
                 path: this.getReturnPath(id),
