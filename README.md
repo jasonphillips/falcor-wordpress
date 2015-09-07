@@ -18,7 +18,7 @@ npm start
 # open your browser and visit http://localhost:9090
 ```
 
-The demo page allows you to test live queries against the offical [Wordpress Rest API demo site](http://demo.wp-api.org/), including a number of examples to get you started.
+The demo page allows you to test live queries against the offical [Wordpress Rest API demo site](http://demo.wp-api.org/), including a number of examples to get you started.  Watch the server console to see a list of REST endpoints that are being fetched on each flight.
 
 **Note:** there are some differences betweeen the 1.0 and 2.0 branches of the WP API. This package targets  2.0, and uses a 2.0 endpoint for its demo.
 
