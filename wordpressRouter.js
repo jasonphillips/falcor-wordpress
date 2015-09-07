@@ -72,18 +72,17 @@ class WordpressRouter extends
     },
 
     {
-      route: 'termsById.category.[{integers:categoryIds}][{keys:props}]',
+      route: 'termsById[{keys:vocabularies}][{integers:categoryIds}][{keys:props}]',
       get: function (pathSet) {
-        var handler = new TermsById(this, pathSet.categoryIds, pathSet.props, 'category');
-        return handler.buildReturn();
-      }
-    },
-
-    {
-      route: 'termsById.tag.[{integers:tagIds}][{keys:props}]',
-      get: function (pathSet) {
-        var handler = new TermsById(this, pathSet.tagIds, pathSet.props, 'tag');
-        return handler.buildReturn();
+        var promises = _.map(pathSet.vocabularies, (vocabulary) => {
+          var handler = new TermsById(
+            this, pathSet.categoryIds, pathSet.props, vocabulary
+          );
+          return handler.buildReturn();
+        });
+        return Promise.all(promises).then((records) => {
+          return _.flatten(records);
+        });
       }
     },
 
