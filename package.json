@@ -31,7 +31,7 @@
     "falcor-router": "~0.2.9",
     "lodash": "^3.10.1",
     "promise": "^7.0.4",
-    "wordpress-rest-api": "https://github.com/jasonphillips/wordpress-rest-api.git#APIv2"
+    "wordpress-rest-api": "https://github.com/jasonphillips/wordpress-rest-api.git#683ce39896aa8383cfda6b24df7d6fa3e65b17c3"
   },
   "devDependencies": {
     "babel": "^5.8.23",
