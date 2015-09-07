@@ -69,7 +69,6 @@ class WordpressRouter extends
     {
       route: 'taxonomies[{keys:vocabularies}].terms[{keys:indices}]',
       get: function (pathSet) {
-        var userId = this.userId;
         var promises = _.map(pathSet.vocabularies, (vocabulary) => {
           var handler = new TermsByIndices(
             this, pathSet.indices, {orderby: 'date'}, vocabulary
@@ -122,11 +121,14 @@ class WordpressRouter extends
     }
 
   ]) {
-    constructor(userId, endpoint) {
+    constructor(endpoint, auth) {
       super();
-      // userId placeholder for future authenticated option
-      this.userId = userId;
-      this.wp = new WP({endpoint: endpoint});
+      let options = {endpoint: endpoint};
+      // auth object should have username, password fields
+      if (typeof auth !== 'undefined') {
+        _.merge(options, auth, {auth: true});
+      }
+      this.wp = new WP(options);
       this.log = log;
       // caching for rendundant data in a single flight
       this.cache = {};
@@ -145,6 +147,6 @@ class WordpressRouter extends
  * Export generator for disposable instances
  */
 
-module.exports = function (userId, endpoint) {
-  return new WordpressRouter(userId, endpoint);
+module.exports = function (endpoint, auth) {
+  return new WordpressRouter(endpoint, auth);
 };
