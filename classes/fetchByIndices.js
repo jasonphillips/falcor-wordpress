@@ -9,6 +9,7 @@ class FetchByIndices {
     this.wp = shared.wp;
     this.log = shared.log;
     this.indices = indices;
+    this.cacheSet = shared.cacheSet.bind(shared);
     this.filter = filter;
     this.paging = this.getPaging();
   }
@@ -39,6 +40,7 @@ class FetchByIndices {
           .page(this.paging.page);
       }
       this.log.info('GET: ' + query._renderURI());
+
       query
         .then((response) => {
           resolve(response);
@@ -52,12 +54,17 @@ class FetchByIndices {
 
   resolvePromise(rangePromise) {
     return rangePromise.then((records) => {
-      var referencesList = _.map(
-        records, (record) => $ref(this.getReferencePath(record))
-      );
       var results = [];
       var offset = this.paging ? this.paging.offset : 0;
       var total = this.paging ? records._paging.total : records.length;
+      var referencesList = [];
+
+      // build item references and cache objects
+      _.forEach(records, (record) => {
+        let refPath = this.getReferencePath(record);
+        referencesList.push($ref(refPath));
+        this.cacheSet(refPath, record);
+      });
 
       this.indices.forEach((index) => {
         if (index === 'length') {

@@ -8,6 +8,7 @@ class FetchById {
   constructor(shared, ids, keys) {
     this.wp = shared.wp;
     this.log = shared.log;
+    this.cacheGet = shared.cacheGet.bind(shared);
     this.ids = ids;
     this.keys = keys;
   }
@@ -23,6 +24,11 @@ class FetchById {
     return (typeof key !== 'undefined') ? [id, key] : [id];
   }
 
+  // Override with cache path to check for already retrieved object
+  getCachedPath(id) {
+    return `${id}`;
+  }
+
   // Override with keys that should return references {key=>path}
   getReferenceKeys() {
     return {};
@@ -31,14 +37,21 @@ class FetchById {
   getPromises() {
     var promises = _.map(this.ids, (id) => {
       var itemPromise = new Promise((resolve, reject) => {
-        var query = this.getIdQuery(id);
-        this.log.info('GET: ' + query._renderURI());
-        query.then((response) => {
-          resolve(response);
-        }).catch((err) => {
-          this.log.error(err);
-          resolve({error: `${err.status} for ${err.path}`});
-        });
+        // check cache for already fetched item this flight
+        let cached = this.cacheGet(this.getCachedPath(id));
+        if (typeof cached !== 'undefined') {
+          resolve(cached);
+        } else {
+          let query = this.getIdQuery(id);
+          this.log.info('GET: ' + query._renderURI());
+
+          query.then((response) => {
+            resolve(response);
+          }).catch((err) => {
+            this.log.error(err);
+            resolve({error: `${err.status} for ${err.path}`});
+          });
+        }
       });
 
       return itemPromise;

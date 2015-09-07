@@ -16,6 +16,10 @@ class TermsById extends FetchById {
       ? ['termsById', this.vocabulary, id, key]
       : ['termsById', this.vocabulary, id];
   }
+
+  getCachedPath(id) {
+    return `termsById.${this.vocabulary}[${id}]`;
+  }
 }
 
 export default TermsById;

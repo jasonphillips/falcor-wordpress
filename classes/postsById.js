@@ -10,6 +10,10 @@ class PostsById extends FetchById {
     return (typeof key !== 'undefined') ? ['postsById', id, key] : ['postsById', id];
   }
 
+  getCachedPath(id) {
+    return `postsById[${id}]`;
+  }
+
   getReferenceKeys() {
     return {
       author: (id, value) => `authorsById[${value}]`,

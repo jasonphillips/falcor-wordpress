@@ -127,9 +127,17 @@ class WordpressRouter extends
       // userId placeholder for future authenticated option
       this.userId = userId;
       this.wp = new WP({endpoint: endpoint});
+      this.log = log;
       // caching for rendundant data in a single flight
       this.cache = {};
-      this.log = log;
+    }
+
+    cacheSet(identifier, value) {
+      this.cache[identifier] = value;
+    }
+
+    cacheGet(identifier) {
+      return this.cache[identifier];
     }
 }
 
