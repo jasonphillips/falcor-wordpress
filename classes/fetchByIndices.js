@@ -30,10 +30,16 @@ class FetchByIndices {
 
   getPromise() {
     var rangePromise = new Promise((resolve, reject) => {
-      this.getRootQuery()
-        .filter(this.filter)
-        .per_page(this.paging.perPage)
-        .page(this.paging.page)
+      var query = this.getRootQuery();
+      if (this.filter) {
+        query = query.filter(this.filter);
+      }
+      if (this.paging) {
+        query = query.per_page(this.paging.perPage)
+          .page(this.paging.page);
+      }
+      this.log.info('GET: ' + query._renderURI());
+      query
         .then((response) => {
           resolve(response);
         }).catch((err) => {
@@ -41,7 +47,6 @@ class FetchByIndices {
           resolve({error: `${err.status} for ${err.path}`});
         });
     });
-
     return rangePromise;
   }
 
@@ -51,17 +56,19 @@ class FetchByIndices {
         records, (record) => $ref(this.getReferencePath(record))
       );
       var results = [];
+      var offset = this.paging ? this.paging.offset : 0;
+      var total = this.paging ? records._paging.total : records.length;
 
       this.indices.forEach((index) => {
         if (index === 'length') {
           results.push({
             path: this.getReturnPath(index),
-            value: records._paging.total
+            value: total
           });
         } else {
           results.push({
             path: this.getReturnPath(index),
-            value: referencesList[index - this.paging.offset]
+            value: referencesList[index - offset]
           });
         }
       });

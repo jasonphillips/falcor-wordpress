@@ -31,7 +31,9 @@ class FetchById {
   getPromises() {
     var promises = _.map(this.ids, (id) => {
       var itemPromise = new Promise((resolve, reject) => {
-        this.getIdQuery(id).then((response) => {
+        var query = this.getIdQuery(id);
+        this.log.info('GET: ' + query._renderURI());
+        query.then((response) => {
           resolve(response);
         }).catch((err) => {
           this.log.error(err);
@@ -65,7 +67,7 @@ class FetchById {
             if (typeof referenceKeys[key] === 'function') {
               results.push({
                 path: this.getReturnPath(id, key),
-                value: $ref(referenceKeys[key](value))
+                value: $ref(referenceKeys[key](id, value))
               });
             } else {
               if (typeof value === 'object' && value.rendered) {
