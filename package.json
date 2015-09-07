@@ -1,6 +1,6 @@
 {
   "name": "falcor-wordpress",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "A falcor server for consuming the wordpress API.",
   "homepage": "https://github.com/jasonphillips/falcor-wordpress",
   "main": "./lib/wordpressRouter.js",
