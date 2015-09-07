@@ -31,7 +31,7 @@
           document.querySelector('#cache').innerHTML = '';
 
           model.get(path).then( function(data) {
-            document.querySelector('#response').innerHTML = JSON.stringify(data,null,3);
+            document.querySelector('#response').innerHTML = JSON.stringify(data.json,null,3);
             document.querySelector('#cache').innerHTML = JSON.stringify(model.getCache(),null,3);
           },jerror);
           return false;
