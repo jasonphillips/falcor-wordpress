@@ -17,7 +17,8 @@ var PostsById = require('./classes/postsById.js');
 var PostsByIndices = require('./classes/postsByIndices.js');
 var TermsById = require('./classes/termsById.js');
 var TaxonomiesById = require('./classes/taxonomiesById.js');
-var TermsByIndices = require('./classes/TermsByIndices.js');
+var TermsByIndices = require('./classes/termsByIndices.js');
+var TermsByPost = require('./classes/termsByPost.js');
 var AuthorsById = require('./classes/authorsById.js');
 var MediaById = require('./classes/mediaById.js');
 
@@ -36,6 +37,24 @@ class WordpressRouter extends
       get: function (pathSet) {
         var handler = new PostsById(this, pathSet.postIds, pathSet.props);
         return handler.buildReturn();
+      }
+    },
+
+    {
+      route: 'termsByPost[{integers:postIds}][{keys:vocabularies}][{keys:indices}]',
+      get: function (pathSet) {
+        var promises = [];
+        _.forEach(pathSet.postIds, (postId) => {
+          _.forEach(pathSet.vocabularies, (vocabulary) => {
+            var handler = new TermsByPost(
+              this, pathSet.indices, {}, postId, vocabulary
+            );
+            promises.push(handler.buildReturn());
+          });
+        });
+        return Promise.all(promises).then((records) => {
+          return _.flatten(records);
+        });
       }
     },
 
@@ -108,6 +127,8 @@ class WordpressRouter extends
       // userId placeholder for future authenticated option
       this.userId = userId;
       this.wp = new WP({endpoint: endpoint});
+      // caching for rendundant data in a single flight
+      this.cache = {};
       this.log = log;
     }
 }
