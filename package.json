@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "A falcor server for consuming the wordpress API.",
   "homepage": "https://github.com/jasonphillips/falcor-wordpress",
+  "main": "./lib/wordpressRouter.js",
   "author": {
     "name": "Jason Phillips",
     "url": "https://github.com/jasonphillips"
@@ -18,15 +19,12 @@
     }
   ],
   "scripts": {
-    "start": "babel-node index.js | bunyan",
-    "lint": "eslint *.js classes/*.js"
+    "lint": "eslint src/*.js src/handlers/*.js",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "dependencies": {
-    "body-parser": "^1.12.4",
     "bunyan": "^1.4.0",
-    "express": "~4.11.1",
-    "falcor": "~0.1.12",
-    "falcor-express": "https://github.com/jasonphillips/falcor-express.git#jsonHeader",
     "falcor-json-graph": "~1.1.5",
     "falcor-router": "~0.2.9",
     "lodash": "^3.10.1",

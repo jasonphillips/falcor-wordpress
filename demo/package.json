@@ -1,0 +1,27 @@
+{
+  "name": "falcor-wordpress-example",
+  "version": "0.0.5",
+  "description": "A an example falcor server for using the Falcor Wordpress router.",
+  "author": {
+    "name": "Jason Phillips",
+    "url": "https://github.com/jasonphillips"
+  },
+  "licenses": [
+    {
+      "type": "Apache License, Version 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "scripts": {
+    "start": "babel-node server.js | bunyan"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "bunyan": "^1.4.0",
+    "express": "~4.11.1",
+    "falcor-express": "https://github.com/jasonphillips/falcor-express.git#jsonHeader"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}

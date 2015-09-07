@@ -13,14 +13,14 @@ var $error = jsonGraph.error;
 var WP = require('wordpress-rest-api');
 
 // handlers
-var PostsById = require('./classes/postsById.js');
-var PostsByIndices = require('./classes/postsByIndices.js');
-var TermsById = require('./classes/termsById.js');
-var TaxonomiesById = require('./classes/taxonomiesById.js');
-var TermsByIndices = require('./classes/termsByIndices.js');
-var TermsByPost = require('./classes/termsByPost.js');
-var AuthorsById = require('./classes/authorsById.js');
-var MediaById = require('./classes/mediaById.js');
+var PostsById = require('./handlers/postsById.js');
+var PostsByIndices = require('./handlers/postsByIndices.js');
+var TermsById = require('./handlers/termsById.js');
+var TaxonomiesById = require('./handlers/taxonomiesById.js');
+var TermsByIndices = require('./handlers/termsByIndices.js');
+var TermsByPost = require('./handlers/termsByPost.js');
+var AuthorsById = require('./handlers/authorsById.js');
+var MediaById = require('./handlers/mediaById.js');
 
 // logging
 var bunyan = require('bunyan');

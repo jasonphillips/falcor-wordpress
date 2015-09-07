@@ -5,7 +5,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var FalcorServer = require('falcor-express');
-var wordpressRouter = require('./wordpressRouter.js');
+var wordpressRouter = require('../lib/wordpressRouter.js');
 
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({name: 'express'});
