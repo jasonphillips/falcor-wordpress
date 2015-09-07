@@ -6,7 +6,30 @@ This project provides a Falcor Router which acts as a middleman (in node.js) for
 
 ## Getting Started
 
-A demo running in `express` with a simple front-end is included.
+### Basic installation and usage
+
+```
+npm install falcor-wordpress --save
+```
+
+Use it within an express app:
+
+```javascript
+... // basic express boilerplate, app = express();
+
+var FalcorServer = require('falcor-express');
+var wordpressRouter = require('falcor-wordpress');
+var endpoint = 'http://demo.wp-api.org/wp-json/wp/v2';
+
+app.use('/model.json', FalcorServer.dataSourceRoute(function (req, res) {
+  // without authentication
+  return wordpressRouter(endpoint);
+}));
+```
+
+### Included Demo
+
+A demo running in express with a simple front-end is included.
 
 ```
 # install library dependencies
