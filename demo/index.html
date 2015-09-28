@@ -10,8 +10,8 @@
         cursor: pointer;
       }
     </style>
-    <script src="//netflix.github.io/falcor/build/falcor.browser.js">
-    </script>
+    <script src="//netflix.github.io/falcor/build/falcor.browser.js"></script>
+    <script src="//cdn.rawgit.com/WebReflection/circular-json/master/build/circular-json.js"></script>
     <script>
 
         //create model:
@@ -21,8 +21,8 @@
 
         //logging:
         var log = console.log.bind(console);
-        var jlog = function(x) { console.log(JSON.stringify(x, null, 3)); };
-        var jerror = function(x) { console.error(JSON.stringify(x, null, 3)); };
+        var jlog = function(x) { console.log(CircularJSON.stringify(x, stripMeta, 3)); };
+        var jerror = function(x) { console.error(CircularJSON.stringify(x, null, 3)); };
 
         //examples:
         function getPath() {
@@ -31,8 +31,8 @@
           document.querySelector('#cache').innerHTML = '';
 
           model.get(path).then( function(data) {
-            document.querySelector('#response').innerHTML = JSON.stringify(data.json,null,3);
-            document.querySelector('#cache').innerHTML = JSON.stringify(model.getCache(),null,3);
+            document.querySelector('#response').innerHTML = CircularJSON.stringify(data.json,stripMeta,3);
+            document.querySelector('#cache').innerHTML = CircularJSON.stringify(model.getCache(),null,3);
           },jerror);
           return false;
         }
@@ -40,6 +40,13 @@
         function loadExample(code) {
           document.querySelector('#pathInput').value = code;
           document.querySelector('form').onsubmit();
+        }
+
+        function stripMeta(key, value) {
+          if (key[0] == String.fromCharCode(30)) {
+            return undefined;
+          }
+          else return value;
         }
 
     </script>
