@@ -15,6 +15,7 @@ var WP = require('wordpress-rest-api');
 // handlers
 var PostsById = require('./handlers/postsById.js');
 var PostsByIndices = require('./handlers/postsByIndices.js');
+var PostsByTerm = require('./handlers/postsByTerm.js');
 var TermsById = require('./handlers/termsById.js');
 var TaxonomiesById = require('./handlers/taxonomiesById.js');
 var TermsByIndices = require('./handlers/termsByIndices.js');
@@ -37,6 +38,23 @@ class WordpressRouter extends
       get: function (pathSet) {
         var handler = new PostsById(this, pathSet.postIds, pathSet.props);
         return handler.buildReturn();
+      }
+    },
+
+    {
+      route: 'postsByTerm[{keys:vocabularies}][{keys:terms}][{keys:indices}]',
+      get: function (pathSet) {
+        var promises = _.map(pathSet.vocabularies, (vocabulary) => {
+          return _.map(pathSet.terms, (term) => {
+            var handler = new PostsByTerm(
+              this, pathSet.indices, {orderby: 'date'}, vocabulary, term
+            );
+            return handler.buildReturn();
+          });
+        });
+        return Promise.all(_.flatten(promises)).then((records) => {
+          return _.flatten(records);
+        });
       }
     },
 

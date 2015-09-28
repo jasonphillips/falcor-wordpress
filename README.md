@@ -128,6 +128,37 @@ Going deeper: `recentPosts[5].terms.category[0].name`
 }
 ```
 
+## postsByTerm[vocabulary][term-slug]
+
+Example: `postsByTerm.category.tool-kit[0..3]['title','id']`
+
+```json
+{
+  "postsByTerm": {
+    "category": {
+       "tool-kit": {
+          "0": {
+             "title": "Writing Reports, Quick Guide",
+             "id": 97
+          },
+          "1": {
+             "title": "Analyzing Data, Quick Guide",
+             "id": 95
+          },
+          "2": {
+             "title": "Measuring Outcomes, Quick Guide",
+             "id": 92
+          },
+          "3": {
+             "title": "Creating Learning Outcomes, Quick Guide",
+             "id": 90
+          }
+       }
+    }
+  }
+}
+```
+
 ## termsById[vocabulary]
 
 Categories example: `termsById.category[4,70]['name','description']`
@@ -270,6 +301,6 @@ These are also available at root, though generally more useful where referenced 
 - [x] termsById
 - [x] authorsById
 - [x] mediaById
-- [ ] posts by term
+- [x] posts by term
 - [ ] more linked subqueries
 - [ ] additional listings by varied sorts
