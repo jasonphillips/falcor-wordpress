@@ -47,6 +47,8 @@ The demo page allows you to test live queries against the offical [Wordpress Res
 
 **Note:** there are some differences betweeen the 1.0 and 2.0 branches of the WP API. This package targets  2.0, and uses a 2.0 endpoint for its demo.
 
+**Note 9-28-2015:** the official Wordpress Rest API demo site has currently been taken offline; since its status is uncertain, the demo may require that you edit `server.js` to point to your own instance of a Wordpress site running the REST API version 2. I'll update instructions further to that end once if it becomes clear the their public demo is permanently offline.
+
 ## Currently implemented top-level routes
 
 Below are the top-level routes available, along with some example paths that might be requested (try these live on the included demo).
