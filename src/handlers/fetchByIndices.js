@@ -56,7 +56,7 @@ class FetchByIndices {
     return rangePromise.then((records) => {
       var results = [];
       var offset = this.paging ? this.paging.offset : 0;
-      var total = this.paging ? records._paging.total : records.length;
+      var total = (this.paging && records._paging) ? records._paging.total : records.length;
       var referencesList = [];
 
       // build item references and cache objects

@@ -77,6 +77,24 @@ class WordpressRouter extends
     },
 
     {
+      route: 'taxonomies[{keys:vocabularies}].termsByParentId[{integers:parentIds}][{keys:indices}]',
+      get: function (pathSet) {
+        var promises = [];
+        _.forEach(pathSet.vocabularies, (vocabulary) => {
+          _.forEach(pathSet.parentIds, (parentId) => {
+            var handler = new TermsByIndices(
+              this, pathSet.indices, {orderby: 'date'}, vocabulary, parentId
+            );
+            promises.push(handler.buildReturn());
+          });
+        });
+        return Promise.all(promises).then((records) => {
+          return _.flatten(records);
+        });
+      }
+    },
+
+    {
       route: 'recentPosts[{keys:indices}]',
       get: function (pathSet) {
         var handler = new PostsByIndices(this, pathSet.indices, {orderby: 'date'});

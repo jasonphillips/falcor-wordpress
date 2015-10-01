@@ -2,13 +2,18 @@ var FetchByIndices = require('./FetchByIndices.js');
 
 class TermsByIndices extends FetchByIndices {
 
-  constructor(shared, indices, filter, vocabulary) {
+  constructor(shared, indices, filter, vocabulary, parentId) {
     super(shared, indices, filter);
     this.vocabulary = vocabulary;
+    this.parentId = parentId;
   }
 
   getRootQuery() {
-    return this.wp.taxonomy(this.vocabulary).terms();
+    let query = this.wp.taxonomy(this.vocabulary).terms();
+    if (this.parentId) {
+      query = query.parent(this.parentId);
+    }
+    return query;
   }
 
   getReferencePath(record) {
@@ -16,9 +21,13 @@ class TermsByIndices extends FetchByIndices {
   }
 
   getReturnPath(index) {
+    let base = ['taxonomies', this.vocabulary, this.parentId ? 'termsByParentId' : 'terms'];
+    if (this.parentId) {
+      base.push(this.parentId);
+    }
     return (typeof index !== 'undefined')
-      ? ['taxonomies', this.vocabulary, 'terms', index]
-      : ['taxonomies', this.vocabulary, 'terms'];
+      ? base.concat([index])
+      : base;
   }
 }
 

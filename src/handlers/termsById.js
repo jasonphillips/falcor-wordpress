@@ -20,6 +20,12 @@ class TermsById extends FetchById {
   getCachedPath(id) {
     return `termsById.${this.vocabulary}[${id}]`;
   }
+
+  getReferenceKeys() {
+    return {
+      children: (id, value) => `taxonomies.${this.vocabulary}.termsByParentId[${id}]`
+    };
+  }
 }
 
 export default TermsById;
