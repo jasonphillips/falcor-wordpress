@@ -19,7 +19,7 @@ Use it within an express app:
 
 var FalcorServer = require('falcor-express');
 var wordpressRouter = require('falcor-wordpress');
-var endpoint = 'http://demo.wp-api.org/wp-json/wp/v2';
+var endpoint = 'http://demo.wp-api.org/wp-json';
 
 app.use('/model.json', FalcorServer.dataSourceRoute(function (req, res) {
   // without authentication
@@ -47,8 +47,6 @@ The demo page allows you to test live queries against the offical [Wordpress Res
 
 **Note:** there are some differences betweeen the 1.0 and 2.0 branches of the WP API. This package targets  2.0, and uses a 2.0 endpoint for its demo.
 
-**Note 9-28-2015:** the official Wordpress Rest API demo site has currently been taken offline; since its status is uncertain, the demo may require that you edit `server.js` to point to your own instance of a Wordpress site running the REST API version 2. I'll update with further instructions to that end if it becomes clear that their public demo is permanently offline.
-
 ## Currently implemented top-level routes
 
 Below are the top-level routes available, along with some example paths that might be requested (try these live on the included demo).
@@ -74,14 +72,14 @@ Basic example:  `postsById[171,131]["title","slug","link"]`
 }
 ```
 
-Going deeper: `postsById[131].terms.category[0].name`
+Going deeper: `postsById[131].terms.categories[0].name`
 
 ```json
 {
    "postsById": {
       "131": {
          "terms": {
-            "category": {
+            "categories": {
                "0": {
                   "name": "Illum in fugit assumenda quo et reprehenderit maxime saepe"
                }
@@ -112,14 +110,14 @@ Basic example: `recentPosts[0..2].title`
 }
 ```
 
-Going deeper: `recentPosts[5].terms.category[0].name`
+Going deeper: `recentPosts[5].terms.categories[0].name`
 
 ```json
 {
    "recentPosts": {
       "5": {
          "terms": {
-            "category": {
+            "categories": {
                "0": {
                   "name": "In fugit quae libero a"
                }
@@ -132,12 +130,12 @@ Going deeper: `recentPosts[5].terms.category[0].name`
 
 ## postsByTerm[vocabulary][term-slug]
 
-Example: `postsByTerm.category.tool-kit[0..3]['title','id']`
+Example: `postsByTerm.categories.tool-kit[0..3]['title','id']`
 
 ```json
 {
   "postsByTerm": {
-    "category": {
+    "categories": {
        "tool-kit": {
           "0": {
              "title": "Writing Reports, Quick Guide",
@@ -163,12 +161,12 @@ Example: `postsByTerm.category.tool-kit[0..3]['title','id']`
 
 ## termsById[vocabulary]
 
-Categories example: `termsById.category[4,70]['name','description']`
+Categories example: `termsById.categories[4,70]['name','description']`
 
 ```json
 {
    "termsById": {
-      "category": {
+      "categories": {
          "4": {
             "name": "Ab iusto",
             "description": "Sunt distinctio asperiores dolores quae odit necessitatibus dolor dolore quo doloremque nam incidunt molestiae facilis quisquam voluptatem voluptas et voluptas sapiente laudantium fugiat"
@@ -182,12 +180,12 @@ Categories example: `termsById.category[4,70]['name','description']`
 }
 ```
 
-Tags example: `termsById.tag[36]['slug','name']`
+Tags example: `termsById.tags[36]['slug','name']`
 
 ```json
 {
    "termsById": {
-      "tag": {
+      "tags": {
          "36": {
             "slug": "accusantium-dolore-porro-nihil-eveniet-dolores-impedit-quisquam",
             "name": "Accusantium dolore porro nihil eveniet dolores impedit quisquam"
@@ -214,12 +212,12 @@ Metadata: `taxonomies.category.meta['name','slug']`
 }
 ```
 
-Number of available terms: `taxonomies.category.terms.length`
+Number of available terms: `taxonomies.categories.terms.length`
 
 ```json
 {
    "taxonomies": {
-      "category": {
+      "categories": {
          "terms": {
             "length": "52"
          }
@@ -228,12 +226,12 @@ Number of available terms: `taxonomies.category.terms.length`
 }
 ```
 
-Terms range: `taxonomies.tag.terms[0..2]['name']`
+Terms range: `taxonomies.tags.terms[0..2]['name']`
 
 ```json
 {
    "taxonomies": {
-      "tag": {
+      "tags": {
          "terms": {
             "0": {
                "name": "Accusantium dolore porro nihil eveniet dolores impedit quisquam"
@@ -257,13 +255,13 @@ These are also available at root, though generally more useful where referenced 
 `authorsById`
 `mediaById`
 
-**Media** linked as featured image: `postsById[131].featured_image.media_details.sizes.thumbnail.file`
+**Media** linked as featured image: `postsById[131].featured_media.media_details.sizes.thumbnail.file`
 
 ```json
 {
    "postsById": {
       "131": {
-         "featured_image": {
+         "featured_media": {
             "media_details": {
                "sizes": {
                   "thumbnail": {
