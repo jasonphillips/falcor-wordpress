@@ -17,7 +17,7 @@ class PostsById extends FetchById {
   getReferenceKeys() {
     return {
       author: (id, value) => `authorsById[${value}]`,
-      featured_image: (id, value) => `mediaById[${value}]`,
+      featured_media: (id, value) => `mediaById[${value}]`,
       terms: (id, value) => `termsByPost[${id}]`
     };
   }

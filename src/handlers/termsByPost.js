@@ -9,7 +9,7 @@ class TermsByPost extends FetchByIndices {
   }
 
   getRootQuery() {
-    return this.wp.posts().id(this.postId).terms(this.vocabulary);
+    return this.wp.taxonomies().collection(this.vocabulary).forPost(this.postId);
   }
 
   // pagination does not exist on post terms

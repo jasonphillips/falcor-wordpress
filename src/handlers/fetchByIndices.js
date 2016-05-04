@@ -36,7 +36,7 @@ class FetchByIndices {
         query = query.filter(this.filter);
       }
       if (this.paging) {
-        query = query.per_page(this.paging.perPage)
+        query = query.perPage(this.paging.perPage)
           .page(this.paging.page);
       }
       this.log.info('GET: ' + query._renderURI());

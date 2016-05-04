@@ -9,7 +9,7 @@ var wordpressRouter = require('../lib/wordpressRouter.js');
 
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({name: 'express'});
-var endpoint = 'http://demo.wp-api.org/wp-json/wp/v2';
+var endpoint = 'http://demo.wp-api.org/wp-json';
 
 app.use(bodyParser.urlencoded({extended: false}));
 
