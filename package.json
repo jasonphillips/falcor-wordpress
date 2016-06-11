@@ -21,6 +21,7 @@
   "scripts": {
     "lint": "eslint src/*.js src/handlers/*.js",
     "compile": "babel -d lib/ src/",
+    "test": "_mocha tests --recursive",
     "prepublish": "npm run compile"
   },
   "dependencies": {
@@ -34,6 +35,11 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.1",
-    "eslint": "^0.21.0"
+    "chai": "^3.5.0",
+    "eslint": "^0.21.0",
+    "falcor": "^0.1.17",
+    "nock": "^8.0.0",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0"
   }
 }

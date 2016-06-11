@@ -1,0 +1,33 @@
+[
+    {
+        "scope": "https://demo.wp-api.org:443",
+        "method": "GET",
+        "path": "/wp-json/wp/v2/posts/1",
+        "body": "",
+        "status": 200,
+        "response": [
+            "1f8b0800000000000003ad55d16adb3014fd1555cf49ec94650393a60c36d8de0a2bf4612a41b1af1dadb224a4eba6c1e4df77afdb642dddf29005f2a0d8f239e79e7baed44b53c9623a9295469085bccca71fc7f96c3ccd6ff34fc5e5acf83093cf2f974d8bffdcd0740cd3cb08ae8208b4966bc4900a95a9ac82d64f3661ac8399f8d8a8ec3a5c4de56e245b5f99da0cbbffcebbdf70943bd9ae613eb0d68f373eda8a14e3367039c127a47fd6b887e392985f65f94c65d35c65afb054c668062dc1bda9ef1bf38981ef828b29bd437064d19b5df3b0b8035bfa16047a31d7621da1be52afdc796d8c928bbb1bf1f9e6bbf8429e891f0621cd55a6171371bb3649d06febbb286a13130a2e6e22be5606858fa2020b08c2e048e01a9c48a8238a95f54d635c73413061a11c2b85a7126238aef49d8cb32ad01dae7d1c725783c68e12b36ca1325a16393bd9b6e4e4922ac02e51df7c00475d0854c7bb87094df9b09545ad6d8291ac7d6c35e7943e76958e9c8592a2ddf86880b07e4eefa99dbae125ad969c0c5af73281ade9592fb941c7b3421dfb95bc53d926a8ecf1928ca546244a8edc1164e9ad85128d77ff053760e995efa898d354f10890aa610458d8de744283760555a5571c6a8c1df97642d55d8278a83a42b0cf069f09fd2504e99af5f37141153c1221f93aa651401fa9e9a719b36f97ca223c1a464c03fc26141a51976b4edfa9e0438caf83a693702f9b7011623b20a27ef2ceb7a47d1fcb2d25f42cfdf813f38367a39eb27e20e4ba9794fd7311f2181da838f9ddcb8cf5d2e9968fdf4d20ae77d1e27b60f37c13f411ec8ef620b4c1d298d2c5c179dcddef76bf018bd61a649a060000"
+        ],
+        "headers": {
+            "content-type": "application/json; charset=UTF-8",
+            "content-length": "620",
+            "connection": "close",
+            "access-control-allow-headers": "Authorization",
+            "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages",
+            "allow": "GET",
+            "content-encoding": "gzip",
+            "date": "Sat, 11 Jun 2016 18:44:57 GMT",
+            "link": "<https://demo.wp-api.org/2016/05/10/hello-world/>; rel=\"alternate\"; type=text/html",
+            "server": "nginx/1.4.6 (Ubuntu)",
+            "x-batcache": "HIT",
+            "x-cached": "EXPIRED",
+            "x-content-type-options": "nosniff",
+            "x-ec2-instance-id": "i-f737987d",
+            "x-powered-by": "PHP/7.0.4-6+deb.sury.org~trusty+3",
+            "vary": "Cookie",
+            "x-cache": "Miss from cloudfront",
+            "via": "1.1 b4462bd98dd9186cca8c54d37f70d629.cloudfront.net (CloudFront)",
+            "x-amz-cf-id": "fsfzd1XTGJ8eNkmxQSUhvKg2QOBT5C-eTjqWgO3yIU4_2yC7d3GyBw=="
+        }
+    }
+]
