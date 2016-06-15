@@ -8,7 +8,7 @@ class TermsById extends FetchById {
   }
 
   getIdQuery(id) {
-    return this.wp.taxonomies().collection(this.vocabulary).term(id);
+    return this.wp[this.vocabulary]().id(id);
   }
 
   getReturnPath(id, key) {

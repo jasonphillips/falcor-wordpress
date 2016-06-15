@@ -30,7 +30,7 @@
     "falcor-router": "~0.2.9",
     "lodash": "^3.10.1",
     "promise": "^7.0.4",
-    "wordpress-rest-api": "^0.6.0"
+    "wordpress-rest-api": "https://github.com/kadamwhite/wordpress-rest-api#20160614-dynamic-route-generation-refactor-merge"
   },
   "devDependencies": {
     "babel": "^5.8.23",

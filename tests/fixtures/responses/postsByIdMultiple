@@ -16,18 +16,18 @@
             "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages",
             "allow": "GET",
             "content-encoding": "gzip",
-            "date": "Sat, 11 Jun 2016 18:53:37 GMT",
+            "date": "Sat, 11 Jun 2016 20:48:49 GMT",
             "link": "<https://demo.wp-api.org/2016/05/10/hello-world/>; rel=\"alternate\"; type=text/html",
             "server": "nginx/1.4.6 (Ubuntu)",
-            "x-batcache": "HIT",
-            "x-cached": "EXPIRED",
+            "x-batcache": "MISS",
+            "x-cached": "MISS",
             "x-content-type-options": "nosniff",
             "x-ec2-instance-id": "i-f737987d",
             "x-powered-by": "PHP/7.0.4-6+deb.sury.org~trusty+3",
             "vary": "Cookie",
             "x-cache": "Miss from cloudfront",
-            "via": "1.1 fc18aeb62c808a206a784563624ba71d.cloudfront.net (CloudFront)",
-            "x-amz-cf-id": "X0XfP0Y5Yh60r0zPUAq3ZmF3GDOEs3mKpTZ2CEccXeRPrnK5_Z_HAA=="
+            "via": "1.1 3e4642ebc640ace400836140916c7de0.cloudfront.net (CloudFront)",
+            "x-amz-cf-id": "X1rNg2i6HChBi1LKClOv8eRuW6EAW9UszzBTXkRBN_7R8pvj9BAL9Q=="
         }
     },
     {
@@ -47,7 +47,7 @@
             "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages",
             "allow": "GET",
             "content-encoding": "gzip",
-            "date": "Sat, 11 Jun 2016 18:53:38 GMT",
+            "date": "Sat, 11 Jun 2016 20:48:49 GMT",
             "link": "<https://demo.wp-api.org/2016/05/09/expedita-assumenda-architecto-dolor/>; rel=\"alternate\"; type=text/html",
             "server": "nginx/1.4.6 (Ubuntu)",
             "x-batcache": "MISS",
@@ -57,8 +57,8 @@
             "x-powered-by": "PHP/7.0.4-6+deb.sury.org~trusty+3",
             "vary": "Cookie",
             "x-cache": "Miss from cloudfront",
-            "via": "1.1 9fd00f947d2f04c4189bb2987e6b3f28.cloudfront.net (CloudFront)",
-            "x-amz-cf-id": "pP6iXZnvc0G1MWOB2TFHRZNwqnnJi9lSdGWTtDSVpvaEkGMu9c6gaQ=="
+            "via": "1.1 c381fe6202a5a2a18615c3efcbdca28a.cloudfront.net (CloudFront)",
+            "x-amz-cf-id": "RDj2GV5WOtH2XtVILixPwTKEdNjyd9B6cMhSwPKn9Ke5m3f1nNArtw=="
         }
     }
 ]

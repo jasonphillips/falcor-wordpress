@@ -9,7 +9,7 @@ class TermsByIndices extends FetchByIndices {
   }
 
   getRootQuery() {
-    let query = this.wp.taxonomies().collection(this.vocabulary);
+    let query = this.wp[this.vocabulary]();
     if (this.parentId) {
       query = query.parent(this.parentId);
     }

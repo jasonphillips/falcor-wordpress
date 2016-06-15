@@ -107,7 +107,7 @@ class WordpressRouter extends
       get: function (pathSet) {
         var promises = _.map(pathSet.vocabularies, (vocabulary) => {
           var handler = new TermsByIndices(
-            this, pathSet.indices, {orderby: 'date'}, vocabulary
+            this, pathSet.indices, null, vocabulary
           );
           return handler.buildReturn();
         });

@@ -1,0 +1,32 @@
+[
+    {
+        "scope": "https://demo.wp-api.org:443",
+        "method": "GET",
+        "path": "/wp-json/wp/v2/taxonomies/category",
+        "body": "",
+        "status": 200,
+        "response": [
+            "1f8b08000000000000039d90c16ec4200c44ffc5e774917ae4dacf585615226e420bd802a7e92ae2df6b9aeda9b7deacc11edecc01c567040b2f5e70a11ab1c1042d6d8b6ae1d4eeaaccd8428d2c918a3ea82077d6557b05a626709b608d587d0d6b0c3e8195bae104af29960fdd3a20504a18cef3eb016bc537f55945b859679c9931d365e727cff142757146e7f746650cce7c3e3b23fe8b0ae501d8f5bb9d6d14cc03e15f768f6cbf7661fb893ecc1e85ecac29ff700ebefd243c2aa63e9ac0cc499b9acfd4fdd6fb373b384fdf56010000"
+        ],
+        "headers": {
+            "content-type": "application/json; charset=UTF-8",
+            "content-length": "211",
+            "connection": "close",
+            "access-control-allow-headers": "Authorization",
+            "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages",
+            "allow": "GET",
+            "content-encoding": "gzip",
+            "date": "Wed, 15 Jun 2016 03:14:57 GMT",
+            "server": "nginx/1.4.6 (Ubuntu)",
+            "x-batcache": "MISS",
+            "x-cached": "MISS",
+            "x-content-type-options": "nosniff",
+            "x-ec2-instance-id": "i-f737987d",
+            "x-powered-by": "PHP/7.0.4-6+deb.sury.org~trusty+3",
+            "vary": "Cookie",
+            "x-cache": "Miss from cloudfront",
+            "via": "1.1 b1e9642a58f783f714c47d1a096accf6.cloudfront.net (CloudFront)",
+            "x-amz-cf-id": "bz5cnAhgVaMMo8KCzf7L-HfgmhbyUToKitnuP1no1x5zcrEGi7HrLQ=="
+        }
+    }
+]

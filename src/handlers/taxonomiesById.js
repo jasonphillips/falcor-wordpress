@@ -3,7 +3,7 @@ var FetchById = require('./fetchById.js');
 class TaxonomiesById extends FetchById {
 
   getIdQuery(id) {
-    return this.wp.taxonomies().collection('taxonomies').term(id);
+    return this.wp.taxonomies().taxonomy(id);
   }
 
   getReturnPath(id, key) {
